@@ -31,13 +31,17 @@ export function RadioGroupField({
   const errorId = `${name}-error`;
 
   return (
-    <fieldset className="flex flex-col gap-2.5">
+    <fieldset className="flex flex-col gap-3">
       <legend className="font-sans text-sm font-medium text-brand-ink">
         {label}
-        {required && <span className="ml-0.5 text-brand-terracotta">*</span>}
+        {required && (
+          <span className="ml-0.5 text-brand-terracotta" aria-hidden="true">
+            *
+          </span>
+        )}
       </legend>
       <div
-        className="flex flex-col gap-2"
+        className="flex flex-col gap-2.5"
         role="radiogroup"
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? errorId : undefined}
@@ -49,10 +53,10 @@ export function RadioGroupField({
             <label
               key={option.value}
               htmlFor={optionId}
-              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border bg-white px-4 py-3 font-sans text-base text-brand-ink transition-colors ${
+              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-sans text-base text-brand-ink transition-[border-color,background-color,box-shadow] duration-200 ${
                 isChecked
-                  ? "border-brand-terracotta ring-1 ring-brand-terracotta"
-                  : "border-brand-ink/15 hover:border-brand-terracotta/50"
+                  ? "border-brand-terracotta bg-brand-terracotta/8 shadow-[inset_0_0_0_1px_var(--brand-terracotta)]"
+                  : "border-brand-ink/12 bg-brand-sand/40 hover:border-brand-terracotta/45 hover:bg-surface"
               }`}
             >
               <input
@@ -68,13 +72,13 @@ export function RadioGroupField({
                 required={required}
                 className="h-4 w-4 shrink-0 accent-brand-terracotta"
               />
-              {option.label}
+              <span className="leading-snug">{option.label}</span>
             </label>
           );
         })}
       </div>
       {hasError && (
-        <p id={errorId} className="font-sans text-sm text-red-600">
+        <p id={errorId} role="alert" className="font-sans text-sm text-red-600">
           {error![0]}
         </p>
       )}

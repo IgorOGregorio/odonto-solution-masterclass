@@ -119,7 +119,7 @@ export function InterestForm() {
   return (
     <form
       action={formAction}
-      className="flex w-full flex-col gap-6 rounded-2xl bg-white/60 p-5 shadow-sm ring-1 ring-brand-ink/10 sm:p-8"
+      className="flex w-full flex-col gap-8 rounded-3xl border border-brand-ink/8 bg-surface/90 p-5 shadow-[var(--shadow-lift)] backdrop-blur-md sm:gap-10 sm:p-8"
     >
       <input
         type="text"
@@ -137,181 +137,232 @@ export function InterestForm() {
         defaultValue="{}"
       />
 
-      <TextField
-        name="fullName"
-        label="Nome completo"
-        required
-        placeholder="Seu nome completo"
-        value={fullName}
-        onChange={(event) => setFullName(event.target.value)}
-        error={fieldErrors.fullName}
-      />
-
-      <TextField
-        name="whatsapp"
-        label="WhatsApp (com DDD)"
-        required
-        type="tel"
-        inputMode="tel"
-        placeholder="(11) 91234-5678"
-        value={whatsapp}
-        onChange={(event) => setWhatsapp(formatWhatsapp(event.target.value))}
-        error={fieldErrors.whatsapp}
-      />
-
-      <TextField
-        name="email"
-        label="E-mail"
-        type="email"
-        required
-        placeholder="seu@email.com"
-        value={email}
-        onChange={(event) => setEmail(event.target.value)}
-        error={fieldErrors.email}
-      />
-
-      <TextField
-        name="cityState"
-        label="Cidade e Estado"
-        required
-        placeholder="Ex: São Paulo, SP"
-        value={cityState}
-        onChange={(event) => setCityState(event.target.value)}
-        error={fieldErrors.cityState}
-      />
-
-      <RadioGroupField
-        name="profession"
-        label="Profissão"
-        required
-        options={[
-          { value: "DENTIST", label: "Cirurgião-dentista" },
-          { value: "DENTAL_STUDENT", label: "Acadêmico de Odontologia" },
-          { value: "OTHER", label: "Outro (qual?)" },
-        ]}
-        onValueChange={setProfession}
-        error={fieldErrors.profession}
-      />
-
-      {profession === "OTHER" && (
-        <TextField
-          name="professionOther"
-          label="Qual sua profissão?"
-          required
-          placeholder="Especifique sua profissão"
-          value={professionOther}
-          onChange={(event) => setProfessionOther(event.target.value)}
-          error={fieldErrors.professionOther}
-        />
-      )}
-
-      <TextField
-        name="cro"
-        label="CRO (opcional, caso queira validar profissionais)"
-        placeholder="Número do CRO"
-        value={cro}
-        onChange={(event) => setCro(event.target.value)}
-        error={fieldErrors.cro}
-      />
-
-      <RadioGroupField
-        name="phase"
-        label="Em que fase você está?"
-        required
-        options={[
-          { value: "NEVER_APPLIED", label: "Nunca apliquei Botox" },
-          {
-            value: "TOOK_COURSE_NOT_CONFIDENT",
-            label: "Já fiz curso, mas não me sinto seguro(a)",
-          },
-          { value: "ALREADY_APPLIES", label: "Já aplico e quero aperfeiçoar" },
-          {
-            value: "WANT_TO_START_HARMONIZATION",
-            label: "Quero começar a trabalhar com Harmonização Facial",
-          },
-        ]}
-        error={fieldErrors.phase}
-      />
-
-      <TextareaField
-        name="goal"
-        label="Qual seu maior objetivo com esse curso?"
-        required
-        rows={3}
-        placeholder="Conte um pouco sobre seu objetivo"
-        value={goal}
-        onChange={(event) => setGoal(event.target.value)}
-        error={fieldErrors.goal}
-      />
-
-      <RadioGroupField
-        name="intent"
-        label="Você pretende fazer o curso:"
-        required
-        options={[
-          { value: "AS_SOON_AS_OPEN", label: "Assim que abrir as inscrições" },
-          { value: "NEXT_3_MONTHS", label: "Nos próximos 3 meses" },
-          { value: "STILL_RESEARCHING", label: "Ainda estou pesquisando" },
-        ]}
-        error={fieldErrors.intent}
-      />
-
-      <RadioGroupField
-        name="source"
-        label="Como conheceu a Masterclass?"
-        required
-        options={[
-          { value: "INSTAGRAM", label: "Instagram" },
-          { value: "FACEBOOK", label: "Facebook" },
-          { value: "REFERRAL", label: "Indicação" },
-          { value: "WHATSAPP", label: "WhatsApp" },
-          { value: "OTHER", label: "Outro" },
-        ]}
-        onValueChange={setSource}
-        error={fieldErrors.source}
-      />
-
-      {source === "OTHER" && (
-        <TextField
-          name="sourceOther"
-          label="Como assim? Nos conte como conheceu"
-          required
-          placeholder="Especifique como conheceu a Masterclass"
-          value={sourceOther}
-          onChange={(event) => setSourceOther(event.target.value)}
-          error={fieldErrors.sourceOther}
-        />
-      )}
-
-      <RadioGroupField
-        name="whatsappConsent"
-        label="Autoriza nosso contato pelo WhatsApp?"
-        required
-        options={[
-          { value: "true", label: "Sim" },
-          { value: "false", label: "Não" },
-        ]}
-        error={fieldErrors.whatsappConsent}
-      />
-
-      <TextareaField
-        name="mainDifficulty"
-        label="Se eu pudesse te ajudar em apenas UMA dificuldade na aplicação de Botox ou Preenchimento, qual seria?"
-        required
-        rows={3}
-        placeholder="Descreva sua principal dificuldade"
-        value={mainDifficulty}
-        onChange={(event) => setMainDifficulty(event.target.value)}
-        error={fieldErrors.mainDifficulty}
-      />
-
-      <button
-        type="submit"
-        disabled={isPending}
-        className="mt-2 w-full rounded-lg bg-brand-terracotta px-6 py-3.5 font-sans text-base font-semibold text-white transition-colors hover:bg-brand-terracotta/90 disabled:cursor-not-allowed disabled:opacity-60"
+      <FormSection
+        title="Seus dados"
+        description="Para entrarmos em contato com as informações da Masterclass."
       >
-        {isPending ? "Enviando..." : "Entrar na lista de prioridade"}
-      </button>
+        <TextField
+          name="fullName"
+          label="Nome completo"
+          required
+          autoComplete="name"
+          placeholder="Seu nome completo"
+          value={fullName}
+          onChange={(event) => setFullName(event.target.value)}
+          error={fieldErrors.fullName}
+        />
+
+        <TextField
+          name="whatsapp"
+          label="WhatsApp (com DDD)"
+          required
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          placeholder="(11) 91234-5678"
+          value={whatsapp}
+          onChange={(event) => setWhatsapp(formatWhatsapp(event.target.value))}
+          error={fieldErrors.whatsapp}
+        />
+
+        <TextField
+          name="email"
+          label="E-mail"
+          type="email"
+          required
+          autoComplete="email"
+          placeholder="seu@email.com"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          error={fieldErrors.email}
+        />
+
+        <TextField
+          name="cityState"
+          label="Cidade e Estado"
+          required
+          autoComplete="address-level2"
+          placeholder="Ex: São Paulo, SP"
+          value={cityState}
+          onChange={(event) => setCityState(event.target.value)}
+          error={fieldErrors.cityState}
+        />
+      </FormSection>
+
+      <FormSection
+        title="Perfil profissional"
+        description="Ajuda a personalizar a comunicação e a turma."
+      >
+        <RadioGroupField
+          name="profession"
+          label="Profissão"
+          required
+          options={[
+            { value: "DENTIST", label: "Cirurgião-dentista" },
+            { value: "DENTAL_STUDENT", label: "Acadêmico de Odontologia" },
+            { value: "OTHER", label: "Outro (qual?)" },
+          ]}
+          onValueChange={setProfession}
+          error={fieldErrors.profession}
+        />
+
+        {profession === "OTHER" && (
+          <TextField
+            name="professionOther"
+            label="Qual sua profissão?"
+            required
+            placeholder="Especifique sua profissão"
+            value={professionOther}
+            onChange={(event) => setProfessionOther(event.target.value)}
+            error={fieldErrors.professionOther}
+          />
+        )}
+
+        <TextField
+          name="cro"
+          label="CRO (opcional)"
+          placeholder="Número do CRO"
+          value={cro}
+          onChange={(event) => setCro(event.target.value)}
+          error={fieldErrors.cro}
+        />
+
+        <RadioGroupField
+          name="phase"
+          label="Em que fase você está?"
+          required
+          options={[
+            { value: "NEVER_APPLIED", label: "Nunca apliquei Botox" },
+            {
+              value: "TOOK_COURSE_NOT_CONFIDENT",
+              label: "Já fiz curso, mas não me sinto seguro(a)",
+            },
+            { value: "ALREADY_APPLIES", label: "Já aplico e quero aperfeiçoar" },
+            {
+              value: "WANT_TO_START_HARMONIZATION",
+              label: "Quero começar a trabalhar com Harmonização Facial",
+            },
+          ]}
+          error={fieldErrors.phase}
+        />
+      </FormSection>
+
+      <FormSection
+        title="Seu interesse"
+        description="Quanto mais detalhes, melhor poderemos te orientar."
+      >
+        <TextareaField
+          name="goal"
+          label="Qual seu maior objetivo com esse curso?"
+          required
+          rows={3}
+          placeholder="Conte um pouco sobre seu objetivo"
+          value={goal}
+          onChange={(event) => setGoal(event.target.value)}
+          error={fieldErrors.goal}
+        />
+
+        <RadioGroupField
+          name="intent"
+          label="Você pretende fazer o curso:"
+          required
+          options={[
+            {
+              value: "AS_SOON_AS_OPEN",
+              label: "Assim que abrir as inscrições",
+            },
+            { value: "NEXT_3_MONTHS", label: "Nos próximos 3 meses" },
+            { value: "STILL_RESEARCHING", label: "Ainda estou pesquisando" },
+          ]}
+          error={fieldErrors.intent}
+        />
+
+        <RadioGroupField
+          name="source"
+          label="Como conheceu a Masterclass?"
+          required
+          options={[
+            { value: "INSTAGRAM", label: "Instagram" },
+            { value: "FACEBOOK", label: "Facebook" },
+            { value: "REFERRAL", label: "Indicação" },
+            { value: "WHATSAPP", label: "WhatsApp" },
+            { value: "OTHER", label: "Outro" },
+          ]}
+          onValueChange={setSource}
+          error={fieldErrors.source}
+        />
+
+        {source === "OTHER" && (
+          <TextField
+            name="sourceOther"
+            label="Como assim? Nos conte como conheceu"
+            required
+            placeholder="Especifique como conheceu a Masterclass"
+            value={sourceOther}
+            onChange={(event) => setSourceOther(event.target.value)}
+            error={fieldErrors.sourceOther}
+          />
+        )}
+
+        <RadioGroupField
+          name="whatsappConsent"
+          label="Autoriza nosso contato pelo WhatsApp?"
+          required
+          options={[
+            { value: "true", label: "Sim" },
+            { value: "false", label: "Não" },
+          ]}
+          error={fieldErrors.whatsappConsent}
+        />
+
+        <TextareaField
+          name="mainDifficulty"
+          label="Se eu pudesse te ajudar em apenas UMA dificuldade na aplicação de Botox ou Preenchimento, qual seria?"
+          required
+          rows={3}
+          placeholder="Descreva sua principal dificuldade"
+          value={mainDifficulty}
+          onChange={(event) => setMainDifficulty(event.target.value)}
+          error={fieldErrors.mainDifficulty}
+        />
+      </FormSection>
+
+      <div className="flex flex-col gap-3 border-t border-brand-ink/8 pt-6">
+        <button
+          type="submit"
+          disabled={isPending}
+          className="min-h-12 w-full cursor-pointer rounded-xl bg-brand-terracotta px-6 py-3.5 font-sans text-base font-semibold text-white shadow-[0_10px_24px_rgb(168_111_69_/_0.28)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-brand-clay hover:shadow-[0_12px_28px_rgb(143_90_53_/_0.32)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none disabled:active:scale-100"
+        >
+          {isPending ? "Enviando..." : "Entrar na lista de prioridade"}
+        </button>
+        <p className="text-center font-sans text-xs leading-relaxed text-brand-muted">
+          Seus dados são usados apenas para contato sobre a Masterclass.
+        </p>
+      </div>
     </form>
+  );
+}
+
+function FormSection({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="flex flex-col gap-5">
+      <div className="flex flex-col gap-1 border-b border-brand-ink/8 pb-3">
+        <h2 className="font-serif text-xl font-semibold text-brand-ink">
+          {title}
+        </h2>
+        <p className="font-sans text-sm leading-relaxed text-brand-muted">
+          {description}
+        </p>
+      </div>
+      <div className="flex flex-col gap-5">{children}</div>
+    </section>
   );
 }
