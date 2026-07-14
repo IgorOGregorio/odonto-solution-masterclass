@@ -13,21 +13,27 @@ export const metadata: Metadata = {
 
 export default function MasterclassPage() {
   return (
-    <main className="flex flex-1 flex-col items-center bg-brand-cream px-4 py-10 sm:px-6 sm:py-16">
-      <div className="flex w-full max-w-xl flex-col items-center gap-8">
-        <Logo className="h-20 w-20" />
+    <main className="bg-page-atmosphere relative flex flex-1 flex-col items-center px-4 py-12 sm:px-6 sm:py-20">
+      <div className="relative z-10 flex w-full max-w-xl flex-col items-center gap-10">
+        <header className="animate-enter flex flex-col items-center gap-7 text-center">
+          <Logo className="h-auto w-64 sm:w-80" />
 
-        <div className="flex flex-col gap-4 text-center">
-          <h1 className="font-serif text-2xl font-semibold leading-tight text-brand-terracotta sm:text-3xl">
-            🚀 Lista de Interesse – Masterclass em Toxina Botulínica na
-            Odontologia e Preenchimento Facial Avançado
-          </h1>
-          <p className="font-sans text-base leading-relaxed text-brand-ink/80">
-            {introText}
-          </p>
+          <div className="flex flex-col items-center gap-4">
+            <p className="font-sans text-[0.7rem] font-semibold tracking-[0.22em] text-brand-terracotta uppercase">
+              Lista de prioridade
+            </p>
+            <h1 className="max-w-lg font-serif text-[1.85rem] font-semibold leading-[1.15] text-balance text-brand-ink sm:text-4xl">
+              Masterclass em Toxina Botulínica e Preenchimento Facial Avançado
+            </h1>
+            <p className="max-w-md font-sans text-base leading-relaxed text-brand-muted">
+              {introText}
+            </p>
+          </div>
+        </header>
+
+        <div className="animate-enter animate-enter-delay-2 w-full">
+          <InterestForm />
         </div>
-
-        <InterestForm />
       </div>
     </main>
   );

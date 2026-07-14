@@ -5,8 +5,7 @@ interface LogoProps {
   className?: string;
 }
 
-// Source files are 4134x4134 squares with generous built-in padding around
-// the compact mark, so 240x240 keeps the wordmark legible without cropping.
+// Cropped assets are ~1200×619 (wordmark lockup, transparent background).
 const SOURCE_BY_VARIANT = {
   light: "/brand/logo.png",
   dark: "/brand/logo-dark.png",
@@ -17,8 +16,8 @@ export function Logo({ variant = "light", className }: LogoProps) {
     <Image
       src={SOURCE_BY_VARIANT[variant]}
       alt="Odonto Solution"
-      width={240}
-      height={240}
+      width={1200}
+      height={619}
       className={className}
       priority
     />
