@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e6e2dc;
+  --foreground: #1e1e1e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand-cream: #e6e2dc;
+  --color-brand-terracotta: #b17f55;
+  --color-brand-ink: #1e1e1e;
+
+  --font-family-serif: var(--font-serif), serif;
+  --font-family-sans: var(--font-sans), sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-sans);
+}

@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Lead {
+  id String @id @default(cuid())
+
+  fullName  String
+  whatsapp  String
+  email     String
+  cityState String
+
+  profession      Profession
+  professionOther String?
+
+  cro String?
+
+  phase Phase
+
+  goal String @db.Text
+
+  intent Intent
+
+  source      Source
+  sourceOther String?
+
+  whatsappConsent Boolean
+
+  mainDifficulty String @db.Text
+
+  // atribuição de campanha (ads)
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmContent  String?
+  utmTerm     String?
+  fbclid      String?
+  gclid       String?
+  referrer    String?
+  landingPath String?
+  userAgent   String?
+
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([whatsapp])
+  @@index([createdAt])
+  @@index([utmCampaign])
+}
+
+enum Profession {
+  DENTIST
+  DENTAL_STUDENT
+  OTHER
+}
+
+enum Phase {
+  NEVER_APPLIED
+  TOOK_COURSE_NOT_CONFIDENT
+  ALREADY_APPLIES
+  WANT_TO_START_HARMONIZATION
+}
+
+enum Intent {
+  AS_SOON_AS_OPEN
+  NEXT_3_MONTHS
+  STILL_RESEARCHING
+}
+
+enum Source {
+  INSTAGRAM
+  FACEBOOK
+  REFERRAL
+  WHATSAPP
+  OTHER
+}
