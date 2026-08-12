@@ -102,7 +102,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 6 — Home = landing (GREEN dos E2Es)
 
-- [ ] Task 6.1: Implementar `app/page.tsx` como landing
+- [x] Task 6.1: Implementar `app/page.tsx` como landing
   - Acceptance: remove `redirect("/masterclass")`; página compõe Header + sections + Footer + WhatsApp FAB como na landing
   - Verify: `npm run test:e2e -- e2e/home.spec.ts` → GREEN; `e2e/nav-masterclass.spec.ts` → GREEN
   - Files: `app/page.tsx`
