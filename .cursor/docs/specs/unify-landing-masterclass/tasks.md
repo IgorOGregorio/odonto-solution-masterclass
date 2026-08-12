@@ -135,7 +135,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 8 — Contrato design
 
-- [ ] Task 8.1: Eliminar classes/tokens legado no código de UI
+- [x] Task 8.1: Eliminar classes/tokens legado no código de UI
   - Acceptance: zero matches de `brand-terracotta|brand-cream|brand-sand|brand-clay|brand-ink|bg-page-atmosphere` em `app/` e `components/` (paths `public/brand/` ok)
   - Verify: `rg` com exit 1 se achar; teste de contrato opcional `lib/design-contract.test.ts` lendo arquivos
   - Files: quaisquer remanescentes + `app/globals.css` limpeza
