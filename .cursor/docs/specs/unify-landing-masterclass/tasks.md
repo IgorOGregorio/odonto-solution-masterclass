@@ -17,7 +17,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 1 — Tooling TDD
 
-- [ ] Task 1.1: Configurar Vitest para UI (`jsdom`) + Testing Library
+- [x] Task 1.1: Configurar Vitest para UI (`jsdom`) + Testing Library
   - Acceptance: deps instaladas; Vitest usa `jsdom` em `*.test.tsx` (ou projeto dual); setup com `@testing-library/jest-dom`; `npm test` ainda passa nos testes de lib existentes
   - Verify: `npm test`
   - Files: `package.json`, `package-lock.json`, `vitest.config.ts`, `vitest.setup.ts` (se criado)
