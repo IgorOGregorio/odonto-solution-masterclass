@@ -60,12 +60,12 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 3 — Content + assets
 
-- [ ] Task 3.1: Copiar `site.ts` + `whatsapp.ts` e adicionar nav Masterclass
+- [x] Task 3.1: Copiar `site.ts` + `whatsapp.ts` e adicionar nav Masterclass
   - Acceptance: `content/site.ts` e `lib/whatsapp.ts` existem; `nav` inclui `{ label: "Masterclass", href: "/masterclass" }`
   - Verify: grep/assert no arquivo; unit opcional `content/site.test.ts` checando nav
   - Files: `content/site.ts`, `lib/whatsapp.ts`, opcional `content/site.test.ts`
 
-- [ ] Task 3.2: Copiar assets públicos da landing
+- [x] Task 3.2: Copiar assets públicos da landing
   - Acceptance: `public/logo.png` e `public/images/**` presentes; `public/brand/logo.png` e `logo-dark.png` intactos
   - Verify: `ls public/logo.png public/images/hero.jpg public/brand/logo.png`
   - Files: `public/logo.png`, `public/images/**` (sem remover brand)
