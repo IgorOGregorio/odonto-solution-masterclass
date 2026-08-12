@@ -74,12 +74,12 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 4 — CSS + fontes + layout root
 
-- [ ] Task 4.1: Substituir `globals.css` pelo tema da landing
+- [x] Task 4.1: Substituir `globals.css` pelo tema da landing
   - Acceptance: tokens shadcn/gold, `text-label`, `font-display`; sem dependência de `--brand-terracotta` no CSS novo
   - Verify: arquivo contém `--primary` / `--gold` e imports shadcn/tw-animate
   - Files: `app/globals.css`
 
-- [ ] Task 4.2: Fontes Playfair + DM Sans no layout
+- [x] Task 4.2: Fontes Playfair + DM Sans no layout
   - Acceptance: `app/fonts.ts` (ou inline no layout) usa Playfair Display + DM Sans; `layout.tsx` aplica variáveis; metadata SEO da landing (`siteConfig`); Meta Pixel + Google Tag preservados
   - Verify: `npm run build` (ou typecheck); inspeção visual rápida no `dev`
   - Files: `app/fonts.ts`, `app/layout.tsx`

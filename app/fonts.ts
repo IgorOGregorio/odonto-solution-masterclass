@@ -1,15 +1,13 @@
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
-export const fontSerif = Cormorant_Garamond({
-  variable: "--font-serif",
+export const fontSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-export const fontSans = Manrope({
-  variable: "--font-sans",
+export const fontDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
