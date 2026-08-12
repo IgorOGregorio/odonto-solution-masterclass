@@ -22,7 +22,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
   - Verify: `npm test`
   - Files: `package.json`, `package-lock.json`, `vitest.config.ts`, `vitest.setup.ts` (se criado)
 
-- [ ] Task 1.2: Scaffold Playwright + scripts
+- [x] Task 1.2: Scaffold Playwright + scripts
   - Acceptance: `@playwright/test` instalado; `playwright.config.ts` com `webServer` apontando para app; pasta `e2e/`; scripts `test:e2e` (e opcional `test:e2e:ui`)
   - Verify: `npx playwright test --list` (ou equivalente) lista suite sem erro de config
   - Files: `package.json`, `playwright.config.ts`, `e2e/.gitkeep` ou primeiro spec vazio placeholder
