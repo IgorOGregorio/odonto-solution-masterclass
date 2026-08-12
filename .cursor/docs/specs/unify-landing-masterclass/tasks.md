@@ -8,7 +8,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 0 — Build scripts (pré-requisito CI)
 
-- [ ] Task 0.1: Separar scripts `build` e `build:deploy`
+- [x] Task 0.1: Separar scripts `build` e `build:deploy`
   - Acceptance: `build` = `prisma generate && next build`; `build:deploy` = `prisma generate && prisma migrate deploy && next build`; documentar no README ou comentário no `package.json` que EasyPanel deve usar `build:deploy`
   - Verify: `npm run build` não chama `migrate deploy` (inspecionar `package.json`); perguntar/confirmar comando atual no EasyPanel antes de merge
   - Files: `package.json`, opcionalmente `README.md`
