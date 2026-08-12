@@ -14,8 +14,10 @@ Unificar a landing da clínica Odonto Solution (`odonto-solution`) e o funil de 
 1. `/` renderiza a landing completa (hero, serviços, sobre, galeria, agendamento, localização, CTA) com o visual atual da landing.
 2. `/masterclass` e `/obrigado` usam os **mesmos tokens, tipografia e componentes** da landing (sem classes `brand-terracotta` / `bg-page-atmosphere`).
 3. Submissão válida do formulário continua persistindo lead + atribuição e redirecionando para `/obrigado` com pixels.
-4. Suite de testes de frontend (comportamento) passa em CI local: rotas críticas + formulário.
+4. Suite de testes de frontend (comportamento) passa localmente e no GitHub Actions: rotas críticas + formulário.
 5. `npm run build` e `npm test` passam.
+6. Nav da landing inclui item **Masterclass** apontando para `/masterclass`.
+7. Variantes de logo light/dark em `public/brand/` permanecem disponíveis via `Logo`.
 
 ## Tech Stack
 
@@ -29,7 +31,8 @@ Unificar a landing da clínica Odonto Solution (`odonto-solution`) e o funil de 
 | Testes unitários/lib | Vitest (já existe) |
 | Testes de UI/comportamento | Vitest + Testing Library (`jsdom`) |
 | Testes E2E de rotas | Playwright |
-| Deploy | Vercel (este repo); projeto `odonto-solution` arquivado após cutover (fora do escopo de código desta branch) |
+| Deploy | EasyPanel na VPS do usuário (passo operacional separado); CI via GitHub Actions (lint + Vitest + Playwright) |
+| CI | GitHub Actions — jobs de lint, unit/UI (Vitest) e E2E (Playwright) |
 
 ### Design system (fonte da verdade + validação ui-ux-pro-max)
 
@@ -74,13 +77,16 @@ npm run dev
 # unit + UI behavior (Vitest)
 npm test
 
-# E2E (Playwright) — a adicionar na implementação
+# E2E (Playwright)
 npx playwright test
+# ou, após scripts no package.json:
+npm run test:e2e
 
 # lint
 npm run lint
 
 # build (Prisma generate + migrate deploy + next build)
+# Em CI/local sem DB: preferir next build com prisma generate; migrate deploy fica no deploy EasyPanel
 npm run build
 
 # start
@@ -106,12 +112,12 @@ components/
   sections/                  # Hero, TrustBar, Services, About, Gallery, Scheduling, Location, Cta
   ui/                        # shadcn Button, Card, Sheet, Badge, Separator, WhatsApp/Scheduling
   icons/                     # social icons
-  brand/logo.tsx             # unificado (path único de logo)
+  brand/logo.tsx             # variantes light/dark em public/brand/
   form/                      # InterestForm + fields (restyled)
   tracking/                  # Meta, GA, conversion (mantidos)
 
 content/
-  site.ts                    # siteConfig da landing
+  site.ts                    # siteConfig da landing (+ nav Masterclass)
 
 lib/
   utils.ts                   # cn() da landing
@@ -119,12 +125,13 @@ lib/
   prisma.ts / attribution / lead-schema  # existentes
 
 public/
-  logo.png
+  logo.png                   # logo da landing (header/hero se aplicável)
   images/                    # hero, gallery, highlights (+ vídeos)
-  brand/                     # consolidar ou apontar Logo para /logo.png
+  brand/                     # logo.png + logo-dark.png (variantes do form)
 
 e2e/                         # Playwright — rotas críticas
 *.test.ts(x)                 # Vitest — lib + componentes de form
+.github/workflows/ci.yml     # lint + Vitest + Playwright
 
 .cursor/docs/specs/
   unify-landing-masterclass/
@@ -199,7 +206,7 @@ Seguir **TDD vertical** (um comportamento → um teste → implementação míni
 - Alterar schema Prisma / migrations.
 - Mudar copy da landing ou campos do formulário.
 - Adicionar dependências além das listadas (shadcn stack + Playwright + Testing Library).
-- Cutover de domínio / desligar projeto Vercel `odonto-solution`.
+- Mudanças de infra EasyPanel / DNS (cutover operacional).
 - Introduzir dark mode.
 
 **Never:**
@@ -213,32 +220,37 @@ Seguir **TDD vertical** (um comportamento → um teste → implementação míni
 
 - [ ] Spec aprovada → Plan → Tasks (gated).
 - [ ] `app/page.tsx` é a landing; não há `redirect("/masterclass")` na home.
+- [ ] Nav inclui Masterclass → `/masterclass`.
+- [ ] `Logo` mantém variantes light/dark em `public/brand/`.
 - [ ] `/masterclass` e `/obrigado` usam tipografia Playfair/DM Sans e tokens `primary` / `foreground` / `muted-foreground`.
 - [ ] Zero ocorrências de `brand-terracotta`, `brand-cream`, `bg-page-atmosphere` no código de UI.
 - [ ] Assets da landing (`public/images/**`, `logo.png`) presentes e referenciados.
 - [ ] Dependências shadcn da landing instaladas; `components/ui/button` etc. disponíveis.
-- [ ] Testes Vitest (lib + UI) e Playwright (rotas) passando.
+- [ ] Testes Vitest (lib + UI) e Playwright (rotas) passando localmente e no GitHub Actions.
 - [ ] `npm run build` passa.
 - [ ] Tracking em `/obrigado` intacto.
+- [ ] Deploy EasyPanel permanece operacional separado (não bloqueia merge do código).
 
 ## Out of Scope
 
 - Redesign de conteúdo/seções da landing.
 - Alteração de campos ou regras de negócio do lead.
 - Merge/arquivamento automático do repo `odonto-solution` no GitHub.
+- Cutover de domínio / publicação EasyPanel (passo operacional do usuário).
 - Dark mode.
 - CMS / i18n.
 
-## Open Questions
+## Decisions (locked)
 
-1. **Logo:** consolidar em `/logo.png` (landing) e remover `public/brand/logo*.png`, ou manter variantes light/dark do forms no header da landing?
-2. **Link Masterclass na nav da landing:** incluir item “Masterclass” / CTA no header, ou funil só via URL direta de ads?
-3. **Playwright no CI:** rodar só local nesta branch, ou já adicionar job (se houver CI)?
-4. **Domínio de produção:** após merge, o domínio principal aponta para este projeto Vercel — confirmar se cutover entra no mesmo PR ou é passo operacional separado.
+1. **Logo:** manter variantes light/dark em `public/brand/` via componente `Logo`; também copiar `logo.png` da landing para usos do header/siteConfig.
+2. **Nav:** incluir item **Masterclass** → `/masterclass` em `siteConfig.nav` (desktop + sheet mobile).
+3. **CI:** adicionar GitHub Actions com lint + Vitest + Playwright nesta entrega.
+4. **Deploy:** cutover/publicação na VPS (EasyPanel) é **passo operacional separado**, fora do PR de código.
 
 ## Assumptions (locked unless corrected)
 
 1. Repo alvo = `odonto-solution-forms`.
 2. Design = landing existente (não a paleta alternativa gerada pelo Pro Max com Inter/preto).
-3. Nesta entrega: apenas docs gated; implementação após Tasks aprovadas.
+3. Docs gated: spec → plan → tasks → implementação.
 4. Branch de trabalho: `feat/unify-landing-and-masterclass`.
+5. Produção roda em EasyPanel/VPS; CI não faz deploy, só valida.
