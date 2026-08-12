@@ -153,7 +153,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 10 — Verificação final
 
-- [ ] Task 10.1: Checklist da spec + suite completa
+- [x] Task 10.1: Checklist da spec + suite completa
   - Acceptance: todos os Success Criteria da spec marcáveis; `npm test`, `npm run test:e2e`, `npm run lint`, `npm run build` passam
   - Verify: checklist manual na PR description; **não** fazer cutover EasyPanel
   - Files: nenhum obrigatório (só verificação)

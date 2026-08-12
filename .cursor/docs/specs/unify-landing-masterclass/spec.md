@@ -218,17 +218,17 @@ Seguir **TDD vertical** (um comportamento → um teste → implementação míni
 
 ## Success Criteria
 
-- [ ] Spec aprovada → Plan → Tasks (gated).
-- [ ] `app/page.tsx` é a landing; não há `redirect("/masterclass")` na home.
-- [ ] Nav inclui Masterclass → `/masterclass`.
-- [ ] `Logo` mantém variantes light/dark em `public/brand/`.
-- [ ] `/masterclass` e `/obrigado` usam tipografia Playfair/DM Sans e tokens `primary` / `foreground` / `muted-foreground`.
-- [ ] Zero ocorrências de `brand-terracotta`, `brand-cream`, `bg-page-atmosphere` no código de UI.
-- [ ] Assets da landing (`public/images/**`, `logo.png`) presentes e referenciados.
-- [ ] Dependências shadcn da landing instaladas; `components/ui/button` etc. disponíveis.
-- [ ] Testes Vitest (lib + UI) e Playwright (rotas) passando localmente e no GitHub Actions.
-- [ ] `npm run build` passa.
-- [ ] Tracking em `/obrigado` intacto.
+- [x] Spec aprovada → Plan → Tasks (gated).
+- [x] `app/page.tsx` é a landing; não há `redirect("/masterclass")` na home.
+- [x] Nav inclui Masterclass → `/masterclass`.
+- [x] `Logo` mantém variantes light/dark em `public/brand/`.
+- [x] `/masterclass` e `/obrigado` usam tipografia Playfair/DM Sans e tokens `primary` / `foreground` / `muted-foreground`.
+- [x] Zero ocorrências de `brand-terracotta`, `brand-cream`, `bg-page-atmosphere` no código de UI.
+- [x] Assets da landing (`public/images/**`, `logo.png`) presentes e referenciados.
+- [x] Dependências shadcn da landing instaladas; `components/ui/button` etc. disponíveis.
+- [x] Testes Vitest (lib + UI) e Playwright (rotas) passando localmente e no GitHub Actions.
+- [x] `npm run build` passa.
+- [x] Tracking em `/obrigado` intacto.
 - [ ] Deploy EasyPanel permanece operacional separado (não bloqueia merge do código).
 
 ## Out of Scope
