@@ -27,22 +27,22 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
   - Verify: `npx playwright test --list` (ou equivalente) lista suite sem erro de config
   - Files: `package.json`, `playwright.config.ts`, `e2e/.gitkeep` ou primeiro spec vazio placeholder
 
-- [ ] Task 1.3: E2E RED — home não redireciona para masterclass
+- [x] Task 1.3: E2E RED — home não redireciona para masterclass
   - Acceptance: teste em `e2e/home.spec.ts` visita `/`, espera URL final sem `/masterclass`, espera texto da marca (ex. "Odonto Solution"); **falha** no estado atual (redirect)
   - Verify: `npm run test:e2e -- e2e/home.spec.ts` → RED
   - Files: `e2e/home.spec.ts`
 
-- [ ] Task 1.4: E2E RED — masterclass com formulário rotulado
+- [x] Task 1.4: E2E RED — masterclass com formulário rotulado
   - Acceptance: `e2e/masterclass.spec.ts` visita `/masterclass`, espera heading Masterclass + label de campo obrigatório (ex. nome); passa já no estado atual ou falha só se heading mudar depois — baseline GREEN ok se página já existe
   - Verify: `npm run test:e2e -- e2e/masterclass.spec.ts`
   - Files: `e2e/masterclass.spec.ts`
 
-- [ ] Task 1.5: E2E RED — nav contém Masterclass
+- [x] Task 1.5: E2E RED — nav contém Masterclass
   - Acceptance: teste espera link acessível "Masterclass" em `/` apontando para `/masterclass`; **RED** até nav existir
   - Verify: `npm run test:e2e -- e2e/nav-masterclass.spec.ts` → RED
   - Files: `e2e/nav-masterclass.spec.ts`
 
-- [ ] Task 1.6: UI RED — CTA do form em loading quando pending
+- [x] Task 1.6: UI RED — CTA do form em loading quando pending
   - Acceptance: `components/form/interest-form.test.tsx` mocka action/pending e afirma botão desabilitado ou texto "Enviando"; **RED** até restyle com `Button`/estado explícito se necessário
   - Verify: `npm test -- interest-form` → RED (ou GREEN se comportamento já existe — então só reforça contrato)
   - Files: `components/form/interest-form.test.tsx`
