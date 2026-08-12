@@ -51,7 +51,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 2 — Dependências shadcn
 
-- [ ] Task 2.1: Instalar deps da landing + `lib/utils.ts` + `components.json`
+- [x] Task 2.1: Instalar deps da landing + `lib/utils.ts` + `components.json`
   - Acceptance: deps `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react`, `radix-ui`, `tw-animate-css` instaladas; `cn()` em `lib/utils.ts`; `components.json` com paths sem `src/` e css `app/globals.css`
   - Verify: `npx tsc --noEmit` ou import de `cn` em smoke; `npm test`
   - Files: `package.json`, `package-lock.json`, `lib/utils.ts`, `components.json`
