@@ -13,7 +13,7 @@ interface TextareaFieldProps {
 }
 
 const fieldClass =
-  "w-full resize-y rounded-xl border bg-brand-sand/40 px-4 py-3 font-sans text-base leading-relaxed text-brand-ink placeholder:text-brand-muted/55 transition-[border-color,box-shadow,background-color] duration-200 focus:bg-surface focus:outline-none focus:ring-2 focus:ring-[var(--ring)]";
+  "w-full min-h-11 resize-y rounded-xl border bg-muted/40 px-4 py-3 font-sans text-base leading-relaxed text-foreground placeholder:text-muted-foreground/55 transition-[border-color,box-shadow,background-color] duration-200 focus:bg-card focus:outline-none focus:ring-2 focus:ring-ring";
 
 export function TextareaField({
   name,
@@ -31,13 +31,10 @@ export function TextareaField({
 
   return (
     <div className="flex flex-col gap-2">
-      <label
-        htmlFor={name}
-        className="font-sans text-sm font-medium text-brand-ink"
-      >
+      <label htmlFor={name} className="font-sans text-sm font-medium text-foreground">
         {label}
         {required && (
-          <span className="ml-0.5 text-brand-terracotta" aria-hidden="true">
+          <span className="ml-0.5 text-primary" aria-hidden="true">
             *
           </span>
         )}
@@ -55,12 +52,12 @@ export function TextareaField({
         aria-describedby={hasError ? errorId : undefined}
         className={`${fieldClass} ${
           hasError
-            ? "border-red-400 focus:border-red-400 focus:ring-red-300/50"
-            : "border-brand-ink/12 focus:border-brand-terracotta"
+            ? "border-destructive focus:border-destructive focus:ring-destructive/40"
+            : "border-border focus:border-primary"
         }`}
       />
       {hasError && (
-        <p id={errorId} role="alert" className="font-sans text-sm text-red-600">
+        <p id={errorId} role="alert" className="font-sans text-sm text-destructive">
           {error![0]}
         </p>
       )}

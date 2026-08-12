@@ -13,6 +13,7 @@ import type { AttributionInput, CreateLeadInput } from "@/lib/lead-schema";
 import { RadioGroupField } from "@/components/form/fields/radio-group-field";
 import { TextField } from "@/components/form/fields/text-field";
 import { TextareaField } from "@/components/form/fields/textarea-field";
+import { Button } from "@/components/ui/button";
 
 const initialState: CreateLeadResult = { ok: false, fieldErrors: {} };
 
@@ -119,7 +120,7 @@ export function InterestForm() {
   return (
     <form
       action={formAction}
-      className="flex w-full flex-col gap-8 rounded-3xl border border-brand-ink/8 bg-surface/90 p-5 shadow-[var(--shadow-lift)] backdrop-blur-md sm:gap-10 sm:p-8"
+      className="flex w-full flex-col gap-8 rounded-3xl border border-border bg-card p-5 shadow-sm backdrop-blur-md sm:gap-10 sm:p-8"
     >
       <input
         type="text"
@@ -327,15 +328,16 @@ export function InterestForm() {
         />
       </FormSection>
 
-      <div className="flex flex-col gap-3 border-t border-brand-ink/8 pt-6">
-        <button
+      <div className="flex flex-col gap-3 border-t border-border pt-6">
+        <Button
           type="submit"
+          size="lg"
+          className="min-h-11 w-full rounded-full text-base"
           disabled={isPending}
-          className="min-h-12 w-full cursor-pointer rounded-xl bg-brand-terracotta px-6 py-3.5 font-sans text-base font-semibold text-white shadow-[0_10px_24px_rgb(168_111_69_/_0.28)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-brand-clay hover:shadow-[0_12px_28px_rgb(143_90_53_/_0.32)] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none disabled:active:scale-100"
         >
           {isPending ? "Enviando..." : "Entrar na lista de prioridade"}
-        </button>
-        <p className="text-center font-sans text-xs leading-relaxed text-brand-muted">
+        </Button>
+        <p className="text-center font-sans text-xs leading-relaxed text-muted-foreground">
           Seus dados são usados apenas para contato sobre a Masterclass.
         </p>
       </div>
@@ -354,11 +356,11 @@ function FormSection({
 }) {
   return (
     <section className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1 border-b border-brand-ink/8 pb-3">
-        <h2 className="font-serif text-xl font-semibold text-brand-ink">
+      <div className="flex flex-col gap-1 border-b border-border pb-3">
+        <h2 className="font-display text-xl font-semibold text-foreground">
           {title}
         </h2>
-        <p className="font-sans text-sm leading-relaxed text-brand-muted">
+        <p className="font-sans text-sm leading-relaxed text-muted-foreground">
           {description}
         </p>
       </div>

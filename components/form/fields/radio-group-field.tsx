@@ -32,10 +32,10 @@ export function RadioGroupField({
 
   return (
     <fieldset className="flex flex-col gap-3">
-      <legend className="font-sans text-sm font-medium text-brand-ink">
+      <legend className="font-sans text-sm font-medium text-foreground">
         {label}
         {required && (
-          <span className="ml-0.5 text-brand-terracotta" aria-hidden="true">
+          <span className="ml-0.5 text-primary" aria-hidden="true">
             *
           </span>
         )}
@@ -53,10 +53,10 @@ export function RadioGroupField({
             <label
               key={option.value}
               htmlFor={optionId}
-              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-sans text-base text-brand-ink transition-[border-color,background-color,box-shadow] duration-200 ${
+              className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 font-sans text-base text-foreground transition-[border-color,background-color,box-shadow] duration-200 ${
                 isChecked
-                  ? "border-brand-terracotta bg-brand-terracotta/8 shadow-[inset_0_0_0_1px_var(--brand-terracotta)]"
-                  : "border-brand-ink/12 bg-brand-sand/40 hover:border-brand-terracotta/45 hover:bg-surface"
+                  ? "border-primary bg-primary/8 shadow-[inset_0_0_0_1px_var(--primary)]"
+                  : "border-border bg-muted/40 hover:border-primary/45 hover:bg-card"
               }`}
             >
               <input
@@ -70,7 +70,7 @@ export function RadioGroupField({
                   onValueChange?.(option.value);
                 }}
                 required={required}
-                className="h-4 w-4 shrink-0 accent-brand-terracotta"
+                className="h-4 w-4 shrink-0 accent-primary"
               />
               <span className="leading-snug">{option.label}</span>
             </label>
@@ -78,7 +78,7 @@ export function RadioGroupField({
         })}
       </div>
       {hasError && (
-        <p id={errorId} role="alert" className="font-sans text-sm text-red-600">
+        <p id={errorId} role="alert" className="font-sans text-sm text-destructive">
           {error![0]}
         </p>
       )}

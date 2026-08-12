@@ -111,22 +111,22 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 7 — Restyle funil (TDD vertical)
 
-- [ ] Task 7.1: Restyle `app/masterclass/page.tsx` com tokens landing
+- [x] Task 7.1: Restyle `app/masterclass/page.tsx` com tokens landing
   - Acceptance: usa `text-label text-primary`, `font-display`, `text-foreground` / `text-muted-foreground`, `bg-background`; sem `brand-terracotta` / `bg-page-atmosphere`
   - Verify: `npm run test:e2e -- e2e/masterclass.spec.ts` → GREEN; grep sem classes legado neste arquivo
   - Files: `app/masterclass/page.tsx`
 
-- [ ] Task 7.2: Restyle fields (`text`, `textarea`, `radio-group`)
+- [x] Task 7.2: Restyle fields (`text`, `textarea`, `radio-group`)
   - Acceptance: tokens `primary` / `muted` / `border` / `destructive`; inputs `min-h-11`; labels associados; gap adequado
   - Verify: `npm test` (incluir asserts de classe/a11y se criados); grep sem `brand-*` nestes arquivos
   - Files: `components/form/fields/text-field.tsx`, `textarea-field.tsx`, `radio-group-field.tsx`, testes de field se houver
 
-- [ ] Task 7.3: Restyle `InterestForm` + CTA com `Button` shadcn
+- [x] Task 7.3: Restyle `InterestForm` + CTA com `Button` shadcn
   - Acceptance: card usa `bg-card border-border`; submit via `Button` `rounded-full` full width; loading desabilita CTA
   - Verify: `npm test -- interest-form` → GREEN; não altera `actions.ts`
   - Files: `components/form/interest-form.tsx`, `components/form/interest-form.test.tsx`
 
-- [ ] Task 7.4: Restyle `/obrigado` + E2E
+- [x] Task 7.4: Restyle `/obrigado` + E2E
   - Acceptance: tokens landing; `ConversionEvents` intacto; `Logo` variantes brand mantidas
   - Verify: E2E `e2e/obrigado.spec.ts` espera texto de confirmação; tracking component ainda montado
   - Files: `app/obrigado/page.tsx`, `e2e/obrigado.spec.ts`
