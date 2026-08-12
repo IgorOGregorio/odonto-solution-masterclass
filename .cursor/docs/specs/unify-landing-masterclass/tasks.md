@@ -88,12 +88,12 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 5 — Componentes da landing
 
-- [ ] Task 5.1: Copiar `components/ui/*` e `components/icons/*`
+- [x] Task 5.1: Copiar `components/ui/*` e `components/icons/*`
   - Acceptance: Button, Card, Sheet, Badge, Separator, WhatsApp/Scheduling buttons e icons importáveis via `@/components/...`
   - Verify: typecheck / import smoke
   - Files: `components/ui/**`, `components/icons/**`
 
-- [ ] Task 5.2: Copiar `components/layout/*` e `components/sections/*`
+- [x] Task 5.2: Copiar `components/layout/*` e `components/sections/*`
   - Acceptance: Header, Footer e todas as sections da landing presentes e compilando
   - Verify: typecheck; Header renderiza itens de `siteConfig.nav`
   - Files: `components/layout/**`, `components/sections/**`
