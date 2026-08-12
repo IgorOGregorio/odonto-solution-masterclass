@@ -126,9 +126,11 @@ public/
 e2e/                         # Playwright — rotas críticas
 *.test.ts(x)                 # Vitest — lib + componentes de form
 
-.cursor/docs/specs/          # esta spec
-.cursor/docs/plans/          # plan (após aprovação)
-.cursor/docs/tasks/          # tasks (após aprovação do plan)
+.cursor/docs/specs/
+  unify-landing-masterclass/
+    spec.md                  # esta spec
+    plan.md                  # plan (após aprovação da spec)
+    tasks.md                 # tasks (após aprovação do plan)
 ```
 
 ## Code Style
