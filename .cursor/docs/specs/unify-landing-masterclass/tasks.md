@@ -144,7 +144,7 @@ Ordem = dependência. Cada task: TDD quando houver comportamento; commit ao fech
 
 ## Fase 9 — GitHub Actions
 
-- [ ] Task 9.1: Workflow CI lint + Vitest + Playwright
+- [x] Task 9.1: Workflow CI lint + Vitest + Playwright
   - Acceptance: `.github/workflows/ci.yml` em push/PR; job lint+unit (`prisma generate`, `lint`, `test`); job e2e (`playwright install`, `npm run build`, `test:e2e`); sem `migrate deploy` no CI
   - Verify: push da branch / `act` se disponível; PR checks documentados
   - Files: `.github/workflows/ci.yml`
